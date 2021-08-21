@@ -1,0 +1,92 @@
+.main-wrapper{
+
+}
+
+.main-content{
+    margin: 200px 2em;
+}
+
+.top-subjects{
+    margin-top: 4em;
+    padding: 7em 2em;
+}
+
+.content-title{
+    color:white;
+    background-color: #4DD599;
+    font-size:2em;
+    text-align: center;
+    padding: 0.6em 0;
+}
+.content-title p{
+    margin: 0!important;
+}
+
+.contents{
+    background-color:rgba(238, 238, 238, 0.8);//TODO::背景画像がまだないので分かりやすいように水色にしてます
+}
+
+.top-image{
+    background-image: url("/images/main-top.png");
+    height: 700px;
+    background-repeat: no-repeat;
+}
+
+.top-title p{
+    font-size: 7em;
+    letter-spacing: 1em;
+}
+
+.top-sub p{
+    font-size: 3em;
+    background-color:rgba(255,255,255,0.8);
+}
+.background-img{
+    background-image: url("/images/background.png");
+}
+
+@media all and (min-width: 1024px) and (max-width: 1280px) { }
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+    .top-title p{
+        font-size: 5em;
+        letter-spacing: 0.5em;
+    }
+
+    .top-sub p{
+        font-size: 2em;
+        background-color:rgba(255,255,255,0.8);
+    }
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+    .top-title p{
+        font-size: 4em;
+        letter-spacing: 0.3em;
+    }
+
+    .top-sub p{
+        font-size: 1.8em;
+        background-color:rgba(255,255,255,0.8);
+    }
+}
+
+@media all and (max-width: 480px) {
+    .top-title p{
+        font-size: 3em;
+        letter-spacing: 0.3em;
+    }
+
+    .top-sub p{
+        font-size: 1.2em;
+        background-color:rgba(255,255,255,0.8);
+    }
+
+    .top-image{
+        background-image: url("/images/main-top-phone.png");
+        background-repeat: no-repeat;
+    }
+}
+
+
+

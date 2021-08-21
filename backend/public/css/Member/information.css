@@ -1,0 +1,39 @@
+.main-content {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.theme {
+    margin-bottom: 60px;
+}
+.card {
+    margin-bottom: 50px;
+}
+.card-header {
+    font-weight: bold;
+    font-size: x-large;
+}
+.return-button {
+    padding: 12px 18px;
+    text-decoration: none !important;
+    color: white !important;
+    background-color: blue;
+    transition: 0.5s;
+    font-weight: bold;
+    font-size: x-large;
+}
+.return-button:hover{
+    background-color: cornflowerblue;
+}
+@media screen and (max-width: 480px) {
+    .main-content {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    .theme {
+        margin-bottom: 50px;
+    }
+    .card-header {
+        font-weight: bold;
+        font-size: large;
+    }
+}

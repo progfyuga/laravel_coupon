@@ -1,0 +1,81 @@
+.main-content {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.theme {
+    margin-bottom: 60px;
+}
+.theme ul {
+    color: red;
+    font-weight: bold;
+    list-style: none;
+}
+.theme p {
+    color: red;
+}
+.card {
+    margin-bottom: 50px;
+    width: 500px;
+}
+.card-header {
+    font-weight: bold;
+    font-size: x-large;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.button-group {
+    margin: 40px 0;
+}
+.update-button {
+    padding: 12px 18px;
+    text-decoration: none !important;
+    border: none;
+    color: white !important;
+    background-color: blue;
+    transition: 0.5s;
+    font-weight: bold;
+    font-size: x-large;
+    outline: none !important;
+}
+.update-button:hover {
+    background-color: cornflowerblue;
+}
+.return-button {
+    padding: 12px 18px;
+    text-decoration: none !important;
+    color: white !important;
+    background-color: blue;
+    transition: 0.5s;
+    font-weight: bold;
+    font-size: x-large;
+}
+.return-button:hover {
+    background-color: cornflowerblue;
+}
+
+@media screen and (max-width: 480px) {
+    .main-content {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    .theme {
+        margin-bottom: 50px;
+    }
+    .theme ul {
+        color: red;
+        font-weight: bold;
+        list-style: none;
+    }
+    .theme p {
+        color: red;
+    }
+    .card {
+        margin-bottom: 50px;
+        width: 300px;
+    }
+    .card-header {
+        font-weight: bold;
+        font-size: large;
+    }
+}

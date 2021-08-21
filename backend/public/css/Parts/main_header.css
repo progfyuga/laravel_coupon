@@ -1,0 +1,50 @@
+.header-login{
+    background-color: #4DD599;
+}
+
+.header-apply{
+    background-color: yellow;
+}
+
+.header-btn{
+    height: 4em;
+    width: 7em;
+    text-align:center;
+    padding:20px 0;
+}
+
+.navbar{
+    padding: 0;
+}
+
+.tel_icon{
+    height: 4em;
+}
+
+.tel_no{
+    height: 4em;
+    text-align:center;
+    padding:20px 0;
+}
+
+
+.codeEgg_icon{
+    height: 3em;
+    margin: 0;
+    padding: 0!important;
+}
+
+@media all and (max-width: 991px) {
+    .header-title{
+        display: none;
+    }
+    .tel_icon{
+        display: none;
+    }
+    .tel_no{
+        display: none;
+    }
+    .header-btn{
+        width: 100%!important;
+    }
+}
