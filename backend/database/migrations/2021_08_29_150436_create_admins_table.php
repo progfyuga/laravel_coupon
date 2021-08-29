@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBuyerMailsTable extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateBuyerMailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('buyer_mails', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('mail', 255);
-            $table->string('course_name', 255);
+            $table->string('email',255);
+            $table->string('password',255);
+            $table->rememberToken();
             $table->timestamps();
             $table->softDeletes()->nullable();
         });
@@ -29,6 +30,6 @@ class CreateBuyerMailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buyer_mails');
+        Schema::dropIfExists('admins');
     }
 }

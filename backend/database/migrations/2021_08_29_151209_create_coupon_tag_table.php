@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRegistrationsTable extends Migration
+class CreateCouponTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateRegistrationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('registrations', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('mail', 255);
-            $table->string('token', 255);
-            $table->timestamps();
-            $table->softDeletes()->nullable();
+        Schema::create('coupon_tag', function (Blueprint $table) {
+            $table->integer('coupon_id')->unsigned();
+            $table->integer('tag_id')->unsigned();
+            $table->primary(['coupon_id', 'tag_id']);
         });
     }
 
@@ -29,6 +27,6 @@ class CreateRegistrationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('registrations');
+        Schema::dropIfExists('coupon_tag');
     }
 }

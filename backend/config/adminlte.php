@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'logo' => 'スクール<b>管理画面</b>',
+    'logo' => 'クーポン<b>管理画面</b>',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -257,14 +257,14 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => '生徒管理',
+            'text'        => '店舗管理',
             'url'         => 'admin/users',
             'icon'        => 'far fa-fw fa-file',
             'label_color' => 'success',
         ],
         [
-            'text'        => 'クラス管理',
-            'url'         => 'admin/class',
+            'text'        => 'タグ管理',
+            'url'         => 'admin/tags',
             'icon'        => 'far fa-fw fa-file',
             'label_color' => 'success',
         ],

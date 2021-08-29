@@ -13,8 +13,9 @@ class AdminTableSeeder extends Seeder
     public function run()
     {
         Admin::create([
-            'email' => 'true@yg.com',
+            'email' => 'admin@admin.com',
             'password' => Hash::make('adminlogin'),
+            'remember_token'    => Str::random(10),
         ]);
 
     }
