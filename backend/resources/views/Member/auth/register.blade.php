@@ -44,65 +44,50 @@
 
                 <form method="POST" action="{{ route('member.register') }}">
                     @csrf
-                    {{--生徒姓--}}{{--生徒名--}}
+
                     <div class="form-group row">
-                        <div class="col-6">
-                            <label for="student_lastname" class="">生徒姓</label>
-                            <input id="student_lastname" class="form-control @error('student_lastname') is-invalid @enderror" name="student_lastname" value="{{ old('student_lastname') }}" required　autocomplete="name">
-                        </div>
-                        <div class="col-6">
-                            <label for="student_firstname" class="">生徒名</label>
-                            <input id="student_firstname" class="form-control @error('student_firstname') is-invalid @enderror" name="student_firstname" value="{{ old('student_firstname') }}" required　autocomplete="name">
+                        <div class="col-12">
+                            <label for="name" class="">店舗名</label>
+                            <input id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
                         </div>
                     </div>
-                    {{--生徒姓フリガナ--}}{{--生徒名フリガナ--}}
+
                     <div class="form-group row">
-                        <div class="col-6">
-                            <label for="student_lastname_kana" class="">生徒姓フリガナ</label>
-                            <input id="student_lastname_kana" class="form-control @error('student_lastname_kana') is-invalid @enderror" name="student_lastname_kana" value="{{ old('student_lastname_kana') }}" required>
-                        </div>
-                        <div class="col-6">
-                            <label for="student_firstname_kana" class="">生徒名フリガナ</label>
-                            <input id="student_firstname_kana" class="form-control @error('student_firstname_kana') is-invalid @enderror" name="student_firstname_kana" value="{{ old('student_firstname_kana') }}" required>
+                        <label for="content" class="">店の説明</label>
+                        @error('content') is-invalid @enderror
+                        <div class="col-12">
+                            <textarea class="form-control" name="content" id="content" rows='8' style="width: 100%;">{{old('content')}}</textarea>
                         </div>
                     </div>
+
                     {{--メールアドレス--}}
                     <div class="form-group">
                         <label for="email" class="">メールアドレス</label>
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required　autocomplete="email">
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                     </div>
+
+                    <div class="form-group">
+                        <label for="prefecture" class="">都道府県</label>
+                        <br>
+                        <select class="form-control" name="prefecture_id" id="prefecture">
+                            @foreach($prefectures as $prefecture)
+                                <option value="{{$prefecture->id}}">{{$prefecture->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     {{--住所--}}
                     <div class="form-group">
                         <label for="address" class="">住所</label>
-                        <input id="address" type="" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required　autocomplete="address">
+                        <input id="address" type="" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address">
                     </div>
+
                     {{--電話番号--}}
                     <div class="form-group">
                         <label for="tel_no" class="">電話番号</label>
-                        <input id="tel_no" type="tel" class="form-control @error('tel_no') is-invalid @enderror" name="tel_no" value="{{ old('tel_no') }}" required　autocomplete="tel">
+                        <input id="tel_no" type="tel" class="form-control @error('tel_no') is-invalid @enderror" name="tel_no" value="{{ old('tel_no') }}" required autocomplete="tel">
                     </div>
-                    {{--保護者姓--}}{{--保護者名--}}
-                    <div class="form-group row">
-                        <div class="col-6">
-                            <label for="parent_lastname" class="">保護者性</label>
-                            <input id="parent_lastname" type="" class="form-control @error('parent_lastname') is-invalid @enderror" name="parent_lastname" value="{{ old('parent_lastname') }}" required>
-                        </div>
-                        <div class="col-6">
-                            <label for="parent_firstname" class="">保護者名</label>
-                            <input id="parent_firstname" type="" class="form-control @error('parent_firstname') is-invalid @enderror" name="parent_firstname" value="{{ old('parent_firstname') }}" required>
-                        </div>
-                    </div>
-                    {{--保護者姓フリガナ--}}{{--保護者名フリガナ--}}
-                    <div class="form-group row">
-                        <div class="col-6">
-                            <label for="parent_lastname_kana" class="">保護者性フリガナ</label>
-                            <input id="parent_lastname_kana" type="" class="form-control @error('parent_lastname_kana') is-invalid @enderror" name="parent_lastname_kana" value="{{ old('parent_lastname_kana') }}" required>
-                        </div>
-                        <div class="col-6">
-                            <label for="parent_firstname_kana" class="">保護者名フリガナ</label>
-                            <input id="parent_firstname_kana" type="" class="form-control @error('parent_firstname_kana') is-invalid @enderror" name="parent_firstname_kana" value="{{ old('parent_firstname_kana') }}" required>
-                        </div>
-                    </div>
+
                     <div class="form-group">
                         {{--ログインパスワード--}}
                         <div class="form-group">

@@ -25,8 +25,7 @@ Route::namespace('User')->prefix('member')->name('member.')->group(function () {
 
         Route::get('/', 'MemberController@index')->name('top');
         Route::get('/information/{info_id}', 'InformationController@index')->name('information');
-
-        Route::get('/class', 'ClassController@index')->name('class')->middleware('class');;
+        Route::get('/class', 'ClassController@index')->name('class')->middleware('class');
 
         Route::get('/user', 'UserController@index')->name('user');
         Route::get('/user/edit', 'UserController@edit')->name('edit');
@@ -68,6 +67,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
         Route::prefix('tags')->name('tags.')->group(function () {
             Route::get('/', 'TagsController@index')->name('top');
+            Route::get('/create', 'TagsController@create')->name('create');
+            Route::post('/store', 'TagsController@store')->name('store');
+            Route::post('/delete', 'TagsController@delete')->name('delete');
+            Route::post('/edit', 'TagsController@edit')->name('edit');
         });
 
         Route::prefix('information')->name('information.')->group(function () {

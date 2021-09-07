@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Prefecture;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -44,7 +45,10 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('member.auth.register');
+        $prefectures = Prefecture::get();
+        return view('member.auth.register')->with([
+            'prefectures' => $prefectures,
+        ]);
     }
     /**
      * Get a validator for an incoming registration request.
@@ -55,17 +59,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'student_lastname' => ['required', 'string', 'max:255', 'regex:/^[ぁ-んァ-ヶ一-龠々]+$/u'],
-            'student_lastname_kana' => ['required', 'string', 'max:255', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
-            'student_firstname' => ['required', 'string', 'max:255', 'regex:/^[ぁ-んァ-ヶ一-龠々]+$/u'],
-            'student_firstname_kana' => ['required', 'string', 'max:255', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
+            'name' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string', 'max:255', 'regex:/^[ぁ-んァ-ヶ一-龠々]+$/u'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
+            'prefecture_id' => ['required'],
             'tel_no' => ['required', 'regex:/^[0-9]+$/u', 'min:9'],
-            'parent_lastname' => ['required', 'string', 'max:255', 'regex:/^[ぁ-んァ-ヶ一-龠々]+$/u'],
-            'parent_lastname_kana' => ['required', 'string', 'max:255', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
-            'parent_firstname' => ['required', 'string', 'max:255', 'regex:/^[ぁ-んァ-ヶ一-龠々]+$/u'],
-            'parent_firstname_kana' => ['required', 'string', 'max:255', 'regex:/^[ア-ン゛゜ァ-ォャ-ョー]+$/u'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -79,17 +78,12 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'student_lastname' => $data['student_lastname'],
-            'student_lastname_kana' => $data['student_lastname_kana'],
-            'student_firstname' => $data['student_firstname'],
-            'student_firstname_kana' => $data['student_firstname_kana'],
+            'name' => $data['name'],
+            'content' => $data['content'],
             'email' => $data['email'],
             'address' => $data['address'],
+            'prefecture_id' => $data['prefecture_id'],
             'tel_no' => $data['tel_no'],
-            'parent_lastname' => $data['parent_lastname'],
-            'parent_lastname_kana' => $data['parent_lastname_kana'],
-            'parent_firstname' => $data['parent_firstname'],
-            'parent_firstname_kana' => $data['parent_firstname_kana'],
             'password' => Hash::make($data['password']),
         ]);
     }
