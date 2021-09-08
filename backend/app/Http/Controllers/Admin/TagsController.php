@@ -40,7 +40,7 @@ class TagsController extends Controller
         }
         DB::commit();
 
-        return redirect(route('admin.tags.create'))->with([
+        return redirect(route('admin.tags.top'))->with([
             'message' => $message,
         ]);
     }
@@ -68,7 +68,7 @@ class TagsController extends Controller
     {
         DB::beginTransaction();
         try {
-            $tag = Tag::where('id',$request->id)->firstOrFail();
+            $tag = Tag::where('id',$request->id)->first();
             $tag->delete();
             $message = 'タグの削除に成功しました。';
         } catch(\Exception $e){

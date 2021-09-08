@@ -36,10 +36,6 @@ Route::namespace('User')->prefix('member')->name('member.')->group(function () {
 
 Route::prefix('main')->name('main.')->group(function () {
     Route::get('/', 'Main\MainController@index')->name('top');
-    Route::get('/promotion', 'Main\MainController@promotion')->name('promotion');
-    Route::get('/purchase_completed', 'Main\MainController@purchaseCompleted')->name('purchase_completed');
-    Route::post('/purchase_completed', 'Main\MainController@purchaseCompletedStore')->name('purchase_completed');
-    Route::get('/buy', 'Main\MainController@buy')->name('buy');
 });
 
 
@@ -65,30 +61,21 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
             Route::post('/add_class_store/', 'UsersController@add_class_store')->name('add_class_store');
         });
 
+        Route::prefix('coupons')->name('coupons.')->group(function () {
+            Route::get('/', 'CouponsController@index')->name('top');
+            Route::get('/create', 'CouponsController@create')->name('create');
+            Route::post('/store', 'CouponsController@store')->name('store');
+            Route::post('/delete', 'CouponsController@delete')->name('delete');
+            Route::get('/edit/{id}', 'CouponsController@edit')->name('edit');
+            Route::post('/update', 'CouponsController@update')->name('update');
+        });
+
         Route::prefix('tags')->name('tags.')->group(function () {
             Route::get('/', 'TagsController@index')->name('top');
             Route::get('/create', 'TagsController@create')->name('create');
             Route::post('/store', 'TagsController@store')->name('store');
             Route::post('/delete', 'TagsController@delete')->name('delete');
             Route::post('/edit', 'TagsController@edit')->name('edit');
-        });
-
-        Route::prefix('information')->name('information.')->group(function () {
-            Route::get('/', 'InformationController@index')->name('top');
-            Route::get('/create', 'InformationController@create')->name('create');
-            Route::post('/store', 'InformationController@store')->name('store');
-            Route::get('/edit/{info_id}', 'InformationController@edit')->name('edit');
-            Route::post('/edit', 'InformationController@update')->name('update');
-            Route::post('/delete', 'InformationController@destroy')->name('delete');
-        });
-
-        Route::prefix('teachers_messages')->name('teachers_messages.')->group(function () {
-            Route::get('/', 'TeachersMessagesController@index')->name('top');
-            Route::get('/create', 'TeachersMessagesController@create')->name('create');
-            Route::post('/store', 'TeachersMessagesController@store')->name('store');
-            Route::get('/edit/{message_id}', 'TeachersMessagesController@edit')->name('edit');
-            Route::post('/edit', 'TeachersMessagesController@update')->name('update');
-            Route::post('/delete', 'TeachersMessagesController@destroy')->name('delete');
         });
 
     });

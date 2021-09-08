@@ -20,8 +20,6 @@ class CreateCouponsTable extends Migration
             $table->string('coupon_content',255);
             $table->string('target',255);
             $table->boolean('release_status');
-            $table->timestamp('release_start_date')->nullable();
-            $table->timestamp('release_end_date')->nullable();
             $table->timestamps();
             $table->softDeletes()->nullable();
         });
