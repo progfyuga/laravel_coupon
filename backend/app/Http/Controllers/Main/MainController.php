@@ -27,4 +27,9 @@ class MainController extends Controller
         return view('Main.top',$pack);
     }
 
+    public function key_word(Request $request)
+    {
+        return $this->index($request->key_word);
+    }
+
 }

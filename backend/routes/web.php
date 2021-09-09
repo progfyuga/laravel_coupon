@@ -39,6 +39,8 @@ Route::get('/', 'Main\MainController@index')->name('top');
 
 Route::prefix('main')->name('main.')->group(function () {
     Route::get('/', 'Main\MainController@index')->name('top');
+    Route::get('/key_word', 'Main\MainController@key_word')->name('key_word');
+    Route::get('/coupon_detail/{id}', 'Main\CouponsController@index')->name('coupon_detail');
 });
 
 

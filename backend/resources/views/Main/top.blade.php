@@ -25,14 +25,23 @@
             }
         </style>
 
-        <div style="margin:100px">
-            マップの店舗からクーポンを検索
-            <input type="text" class="form-control" placeholder="郵便番号・住所を入力してください。">
+        <div style="margin:2em">
+            <form action="{{ route('main.key_word') }}">
+                マップの店舗からクーポンを検索
+                <div class="row">
+                    <div class="col-8">
+                        <input name="key_word" type="text" class="form-control" placeholder="郵便番号・住所を入力してください。">
+                    </div>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-success" >検索</button>
+                    </div>
+                </div>
+            </form>
         </div>
 
-        <div class="row" style="margin:100px">
+        <div class="row" style="margin:2em">
             @foreach($coupons as $coupon)
-                <div class="col-6 col-md-4">
+                <div class="col-12 col-md-4">
                     <div class="card">
                         <div class="card-header">
                             {{ $coupon->coupon_name }}
@@ -42,7 +51,7 @@
                             <p class="card-text">{{ $coupon->coupon_content }}</p>
                             <h5 class="card-title">対象者</h5>
                             <p class="card-text">{{ $coupon->target }}</p>
-                            <a href="#" class="btn btn-info">このクーポンを使う</a>
+                            <a href="{{ route('main.coupon_detail',$coupon->id) }}" class="btn btn-info">このクーポンを使う</a>
                         </div>
                     </div>
                 </div>

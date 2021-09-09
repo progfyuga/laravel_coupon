@@ -9,4 +9,12 @@ class Coupon extends Model
 {
     use Sortable;
     public $sortable = ['id'];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
+
+
+

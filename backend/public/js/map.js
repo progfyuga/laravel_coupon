@@ -42,7 +42,6 @@ function initMap() {
     }
 
     // 地図の作成
-    console.log(markerData[0])
     if((markerData[0] != null)){
         var mapLatLng = new google.maps.LatLng({lat: parseFloat(markerData[0]['lat']), lng: parseFloat(markerData[0]['lng'])}); // 緯度経度のデータ作成
     }else{
