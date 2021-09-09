@@ -2,34 +2,29 @@
 
 namespace App\Http\Controllers\Main;
 
+use App\Coupon;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
 
 class MainController extends Controller
 {
-    public function index()
+    public function index($key_word = '')
     {
-        return view('Main.top');
-    }
+        $coupons = Coupon::where('release_status', 1)
+            ->paginate(6);
 
-    public function promotion()
-    {
-        return view('Main.purchase_promotion');
-    }
+        $shops = User::where('map_status',1)
+            ->select(['id','lat','lng'])
+            ->get();
 
-    public function buy()
-    {
-        return view('Main.buy');
-    }
+        $pack = [
+            'key_word' => $key_word,
+            'coupons' => $coupons,
+            'shops' => $shops->toArray(),
+        ];
 
-    public function purchaseCompletedStore(Request $request){
-
-        //TODO:ここでメール送ったりトークン発行したり
-        return redirect(route('main.purchase_completed'));
-    }
-
-    public function purchaseCompleted(){
-        return view('Main.purchase_completed');
+        return view('Main.top',$pack);
     }
 
 }

@@ -32,7 +32,10 @@ Route::namespace('User')->prefix('member')->name('member.')->group(function () {
         Route::post('/user/edit', 'UserController@update')->name('update');
 
     });
+
 });
+
+Route::get('/', 'Main\MainController@index')->name('top');
 
 Route::prefix('main')->name('main.')->group(function () {
     Route::get('/', 'Main\MainController@index')->name('top');

@@ -19,7 +19,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ route('main.top') }}">
                 <img src="" alt="" class="d-inline-block align-top">
-                CodeEgg
+                店舗ログイン
             </a>
         </div>
     </nav>
