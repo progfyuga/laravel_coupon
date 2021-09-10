@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    <div class="main-wrapper">
+    <div class="main-wrapper" style="margin-top:50px">
         <div id="map"></div>
         <script src="{{ asset('js/map.js') }}"></script>
         <script>

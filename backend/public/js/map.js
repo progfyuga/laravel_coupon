@@ -75,8 +75,8 @@ function initMap() {
             position: markerLatLng, // マーカーを立てる位置を指定
             map: map, // マーカーを立てる地図を指定
             icon: {
-                url: '../images/arrow.png',// マーカーの画像を変更
-                scaledSize : new google.maps.Size(70, 70),//サイズ調節
+                url: '../images/coupon.png',// マーカーの画像を変更
+                scaledSize : new google.maps.Size(100, 70),//サイズ調節
             }
         });
 

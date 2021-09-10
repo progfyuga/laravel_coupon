@@ -30,12 +30,14 @@ class UserController extends Controller
 
         return view('Member.user', ['user' => $user, 'user_class' => $user_class]);
     }
+
     public function edit()
     {
         $user = Auth::user();
 
         return view('Member.edit', ['user' => $user]);
     }
+
     public function update(UserUpdateRequest $request)
     {
         DB::beginTransaction();

@@ -24,8 +24,6 @@ Route::namespace('User')->prefix('member')->name('member.')->group(function () {
     Route::middleware('auth:user')->group(function () {
 
         Route::get('/', 'MemberController@index')->name('top');
-        Route::get('/information/{info_id}', 'InformationController@index')->name('information');
-        Route::get('/class', 'ClassController@index')->name('class')->middleware('class');
 
         Route::get('/user', 'UserController@index')->name('user');
         Route::get('/user/edit', 'UserController@edit')->name('edit');
