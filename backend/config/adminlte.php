@@ -263,23 +263,18 @@ return [
             'label_color' => 'success',
         ],
         [
+            'text'        => 'クーポン管理',
+            'url'         => 'admin/coupons',
+            'icon'        => 'far fa-fw fa-file',
+            'label_color' => 'success',
+        ],
+        [
             'text'        => 'タグ管理',
             'url'         => 'admin/tags',
             'icon'        => 'far fa-fw fa-file',
             'label_color' => 'success',
         ],
-        [
-            'text'        => 'インフォメーション',
-            'url'         => 'admin/information',
-            'icon'        => 'far fa-fw fa-file',
-            'label_color' => 'success',
-        ],
-        [
-            'text'        => '講師メッセージ',
-            'url'         => 'admin/teachers_messages',
-            'icon'        => 'far fa-fw fa-file',
-            'label_color' => 'success',
-        ],
+
 
 //        [
 //            'text'    => 'multilevel',

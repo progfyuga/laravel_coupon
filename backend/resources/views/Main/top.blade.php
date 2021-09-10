@@ -10,34 +10,55 @@
 @endsection
 
 @section('content')
-    <div class="main-wrapper">
-        <div class="top-wrapper">
-            <div class="top-image">
-                <div class="top-subjects">
-                    <div class="top-title">
-                        <p>お家<br>DE学習</p>
+    <div class="main-wrapper" style="margin-top:1.7em">
+        <div id="map"></div>
+        <script src="{{ asset('js/map.js') }}"></script>
+        <script>
+            var markerData = @json($shops);
+            var key_word = '{{ $key_word }}';
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzyiPO5Kdn5iOkFuuAYvP-hntF00Rhoi4&callback=initMap"></script>
+        <style>
+            #map {
+                width: 100vw;
+                height: 700px;
+            }
+        </style>
+
+        <div style="margin:2em">
+            <form action="{{ route('main.key_word') }}">
+                マップの店舗からクーポンを検索
+                <div class="row">
+                    <div class="col-8">
+                        <input name="key_word" type="text" class="form-control" placeholder="郵便番号・住所を入力してください。">
                     </div>
-                    <div class="top-sub">
-                        <p>短期集中でプログラミング能を作りませんか?</p>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-success" >検索</button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
 
-        <div class="main-content">
-            @include('Parts.learning_system')
-        </div>
-        <div class="main-content">
-            @include('Parts.description')
-        </div>
-        <div class="main-content">
-            @include('Parts.teacher_introduction')
-        </div>
-        <div class="main-content">
-            @include('Parts.fee')
-        </div>
-        <div class="main-content">
-            @include('Parts.questions')
+        <div class="row" style="margin:2em">
+            @foreach($coupons as $coupon)
+                <div class="col-12 col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            {{ $coupon->coupon_name }}
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">クーポン内容</h5>
+                            <p class="card-text">{{ $coupon->coupon_content }}</p>
+                            <h5 class="card-title">対象者</h5>
+                            <p class="card-text">{{ $coupon->target }}</p>
+                            <a href="{{ route('main.coupon_detail',$coupon->id) }}" class="btn btn-info">このクーポンを使う</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            <div class="mt-3">
+                <div>{{$coupons->appends(request()->input())->links()}}</div>
+            </div>
         </div>
 
     </div>

@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ route('member.top') }}">
                 <img src="" alt="" class="d-inline-block align-top">
-                CodeEgg
+                店舗画面
             </a>
             <div class="d-flex">
                 <a class="mypage-button" href="{{ route('member.user') }}">マイページ</a>

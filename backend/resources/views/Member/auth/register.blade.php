@@ -19,7 +19,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ route('main.top') }}">
                 <img src="" alt="" class="d-inline-block align-top">
-                CodeEgg
+                登録ページ
             </a>
         </div>
     </nav>
@@ -54,7 +54,6 @@
 
                     <div class="form-group row">
                         <label for="content" class="">店の説明</label>
-                        @error('content') is-invalid @enderror
                         <div class="col-12">
                             <textarea class="form-control" name="content" id="content" rows='8' style="width: 100%;">{{old('content')}}</textarea>
                         </div>
@@ -88,21 +87,20 @@
                         <input id="tel_no" type="tel" class="form-control @error('tel_no') is-invalid @enderror" name="tel_no" value="{{ old('tel_no') }}" required autocomplete="tel">
                     </div>
 
+                    {{--ログインパスワード--}}
                     <div class="form-group">
-                        {{--ログインパスワード--}}
-                        <div class="form-group">
-                            <label for="password" class="">ログインパスワード</label>
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
-                        </div>
-                        {{--ログインパスワード確認--}}
-                        <div class="form-group">
-                            <label for="password_confirmation" class="">ログインパスワード確認</label>
-                            <input id="password_confirmation" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required>
-                        </div>
+                        <label for="password" class="">ログインパスワード</label>
+                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+                    </div>
+                    {{--ログインパスワード確認--}}
+                    <div class="form-group">
+                        <label for="password_confirmation" class="">ログインパスワード確認</label>
+                        <input id="password_confirmation" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required>
+                    </div>
 
-                        <div class="form-group text-center">
-                            <button type="submit" class="register-button">登録</button>
-                        </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="register-button">登録</button>
+                    </div>
                 </form>
             </div>
         </div>
