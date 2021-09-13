@@ -24,7 +24,7 @@ class MainController extends Controller
             'shops' => $shops->toArray(),
         ];
 
-        return view('Main.top',$pack);
+        return view('main.top',$pack);
     }
 
     public function key_word(Request $request)

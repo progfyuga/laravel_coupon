@@ -17,7 +17,7 @@
             var markerData = @json($shops);
             var key_word = '{{ $key_word }}';
         </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzyiPO5Kdn5iOkFuuAYvP-hntF00Rhoi4&callback=initMap"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key={{ config('api_key.google_map') }}&callback=initMap"></script>
         <style>
             #map {
                 width: 100vw;

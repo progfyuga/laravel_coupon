@@ -28,14 +28,14 @@ class UserController extends Controller
             $user_class = "未配属";
         }
 
-        return view('Member.user', ['user' => $user, 'user_class' => $user_class]);
+        return view('member.user', ['user' => $user, 'user_class' => $user_class]);
     }
 
     public function edit()
     {
         $user = Auth::user();
 
-        return view('Member.edit', ['user' => $user]);
+        return view('member.edit', ['user' => $user]);
     }
 
     public function update(UserUpdateRequest $request)

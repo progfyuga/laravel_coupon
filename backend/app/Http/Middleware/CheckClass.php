@@ -21,7 +21,7 @@ class CheckClass
             UsersCourse::where('user_id', Auth::id())->firstOrFail();
         } catch (\Exception $e) {
             $message = 'クラスが登録されていません。お問い合わせ下さい。';
-            return response(view('Member.exception', ['message' => $message]));
+            return response(view('member.exception', ['message' => $message]));
         }
 
         return $next($request);

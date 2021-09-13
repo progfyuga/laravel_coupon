@@ -3,7 +3,7 @@
 @section('title','メンバーページ')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/Member/top.css') }}">
+<link rel="stylesheet" href="{{ asset('css/member/top.css') }}">
 @endsection
 
 @section('content')

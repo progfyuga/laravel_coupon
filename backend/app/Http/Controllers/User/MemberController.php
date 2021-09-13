@@ -22,7 +22,7 @@ class MemberController extends Controller
             ->where('release_status',1)
             ->paginate(6);
 
-        return view('Member.top')->with([
+        return view('member.top')->with([
             'coupons' => $coupons,
             'user' => $user,
         ]);
