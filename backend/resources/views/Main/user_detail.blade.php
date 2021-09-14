@@ -28,7 +28,7 @@
         </div>
 
         <div class="row" style="margin:2em">
-            <h2>発行クーポン一覧</h2>
+            <h2>クーポン一覧</h2>
             @foreach($coupons as $coupon)
                 <div class="col-12 col-md-4">
                     <div class="card">
@@ -46,7 +46,6 @@
                 </div>
             @endforeach
             <div class="mt-3">
-                <a href="{{ route('admin.coupons.create') }}" class="btn btn-primary">新規作成</a>
                 <div style="float:right">{{$coupons->appends(request()->input())->links()}}</div>
             </div>
         </div>
