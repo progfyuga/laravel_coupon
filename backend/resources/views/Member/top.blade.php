@@ -52,7 +52,33 @@
                         <p class="card-text">{{ $coupon->coupon_content }}</p>
                         <h5 class="card-title">対象者</h5>
                         <p class="card-text">{{ $coupon->target }}</p>
-                        <a href="{{ route('main.coupon_detail',$coupon->id) }}" class="btn btn-info">このクーポンを使う</a>
+                        <a href="{{ route('member.coupon.edit',$coupon->id) }}" class="btn btn-info">編集</a>
+                        <button type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#Modal{{$coupon->id}}">削除</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 削除Modal -->
+            <div class="modal fade" id="Modal{{$coupon->id}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="ModalLabel">削除確認</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            {{ $coupon->coupon_name }}を削除しますか？
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">いいえ</button>
+                            <form method="POST" action="{{route('member.coupon.delete')}}">
+                                @csrf
+                                <input hidden name="id" type="text" value="{{$coupon->id}}">
+                                <button type="submit" class="btn btn-danger">削除</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

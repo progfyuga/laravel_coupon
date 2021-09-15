@@ -85,6 +85,7 @@
                 <div style="float:right">{{$coupons->appends(request()->input())->links()}}</div>
             </div>
         </div>
+    </div>
         <!-- /.card-body -->
 
         @stop

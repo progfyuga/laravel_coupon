@@ -107,6 +107,7 @@
                 <div style="float:right">{{$tags->appends(request()->input())->links()}}</div>
             </div>
         </div>
+    </div>
         <!-- /.card-body -->
 
         @stop

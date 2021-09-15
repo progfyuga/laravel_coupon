@@ -40,7 +40,7 @@
                             <p class="card-text">{{ $coupon->coupon_content }}</p>
                             <h5 class="card-title">対象者</h5>
                             <p class="card-text">{{ $coupon->target }}</p>
-                            <a href="{{ route('main.coupon_detail',$coupon->id) }}" class="btn btn-info">編集</a>
+                            <a href="{{ route('main.coupon_detail',$coupon->id) }}" class="btn btn-info">このクーポンを使う</a>
                         </div>
                     </div>
                 </div>

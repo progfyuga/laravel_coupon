@@ -1,10 +1,16 @@
 <header>
     <nav class="navbar navbar-light bg-light ">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('member.top') }}">
-                <img src="" alt="" class="d-inline-block align-top">
-                店舗画面
-            </a>
+            <div class="navbar-brand">
+                <a  href="{{ route('member.top') }}">
+                    店舗画面へ
+                </a>
+                /
+                <a href="{{ route('main.top') }}">
+                    トップページへ
+                </a>
+            </div>
+
             <div class="d-flex">
                 <a class="mypage-button" href="{{ route('member.user') }}">マイページ</a>
                 <a class="logout-button" role="button" rel="nofollow" data-method="POST" href="{{ route('member.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">LOGOUT</a>

@@ -74,6 +74,8 @@
 
             }
         </style>
+    </div>
+
 
         @stop
 

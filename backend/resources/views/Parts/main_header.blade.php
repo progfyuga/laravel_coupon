@@ -9,7 +9,11 @@
     <div class="collapse navbar-collapse justify-content-end"  id="navbarSupportedContent">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link header-login header-btn" href="{{ route('member.login') }}">店舗ログイン</a>
+                @if(Auth::check())
+                    <a class="nav-link header-login header-btn" href="{{ route('member.top') }}">店舗ページへ</a>
+                @else
+                    <a class="nav-link header-login header-btn" href="{{ route('member.login') }}">店舗ログイン</a>
+                @endif
             </li>
         </ul>
     </div>

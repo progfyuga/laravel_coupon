@@ -50,6 +50,7 @@
                 <a href="{{ route('admin.coupons.top') }}" class="btn btn-secondary mt-3">戻る</a>
             </form>
         </div>
+    </div>
         <!-- /.card-body -->
 
         @stop
