@@ -9,6 +9,18 @@
 @section('content')
 <div class="container main-content">
     <div style="margin:2em">
+        @if(count($errors) > 0)
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+        @if (session('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
         <h2>店舗情報</h2>
         <div class="card">
             <div class="card-header">
@@ -31,7 +43,7 @@
         <h2>発行クーポン一覧</h2>
         @foreach($coupons as $coupon)
             <div class="col-12 col-md-4">
-                <div class="card">
+                <div class="card mb-5">
                     <div class="card-header">
                         {{ $coupon->coupon_name }}
                     </div>
@@ -46,7 +58,7 @@
             </div>
         @endforeach
         <div class="mt-3">
-            <a href="{{ route('admin.coupons.create') }}" class="btn btn-primary">新規作成</a>
+            <a href="{{ route('member.coupon.create') }}" class="btn btn-primary">新規作成</a>
             <div style="float:right">{{$coupons->appends(request()->input())->links()}}</div>
         </div>
     </div>

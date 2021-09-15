@@ -29,6 +29,14 @@ Route::namespace('User')->prefix('member')->name('member.')->group(function () {
         Route::get('/user/edit', 'UserController@edit')->name('edit');
         Route::post('/user/edit', 'UserController@update')->name('update');
 
+        Route::prefix('coupon')->name('coupon.')->group(function () {
+            Route::get('/create', 'CouponController@create')->name('create');
+            Route::post('/store', 'CouponController@store')->name('store');
+            Route::post('/delete', 'CouponController@delete')->name('delete');
+            Route::get('/edit/{id}', 'CouponController@edit')->name('edit');
+            Route::post('/update', 'CouponController@update')->name('update');
+        });
+
     });
 
 });

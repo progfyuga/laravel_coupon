@@ -31,7 +31,7 @@
             <h2>クーポン一覧</h2>
             @foreach($coupons as $coupon)
                 <div class="col-12 col-md-4">
-                    <div class="card">
+                    <div class="card mb-5">
                         <div class="card-header">
                             {{ $coupon->coupon_name }}
                         </div>
@@ -40,7 +40,7 @@
                             <p class="card-text">{{ $coupon->coupon_content }}</p>
                             <h5 class="card-title">対象者</h5>
                             <p class="card-text">{{ $coupon->target }}</p>
-                            <a href="{{ route('main.coupon_detail',$coupon->id) }}" class="btn btn-info">このクーポンを使う</a>
+                            <a href="{{ route('main.coupon_detail',$coupon->id) }}" class="btn btn-info">編集</a>
                         </div>
                     </div>
                 </div>

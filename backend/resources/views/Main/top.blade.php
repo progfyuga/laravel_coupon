@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    <div class="main-wrapper" style="margin-top:1.7em">
+    <div class="main-wrapper" style="margin-top:50px">
         <div id="map"></div>
         <script src="{{ asset('js/map.js') }}"></script>
         <script>
@@ -42,7 +42,7 @@
         <div class="row" style="margin:2em">
             @foreach($coupons as $coupon)
                 <div class="col-12 col-md-4">
-                    <div class="card">
+                    <div class="card mb-5">
                         <div class="card-header">
                             {{ $coupon->coupon_name }}
                         </div>
