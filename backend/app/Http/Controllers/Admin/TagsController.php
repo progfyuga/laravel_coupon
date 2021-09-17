@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\TagRequest;
 use App\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class TagsController extends Controller
         return view('admin.tag_create');
     }
 
-    public function store(Request $request)
+    public function store(TagRequest $request)
     {
         DB::beginTransaction();
         try {

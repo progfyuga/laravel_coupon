@@ -31,8 +31,6 @@
                     <div class="card-body">
                         <div class="form-group">
                             <input name="id" hidden value="{{$coupon->id}}">
-                            <label for="user_id">ユーザーID</label>
-                            <input type="text" name="user_id" class="form-control" placeholder="ユーザーID" value="{{ old('user_id') ?: $coupon->user_id}}">
                             <label for="coupon_name">クーポン名</label>
                             <input type="text" name="coupon_name" class="form-control" placeholder="クーポン名" value="{{ old('coupon_name') ?: $coupon->coupon_name }}">
                             <label for="coupon_content">クーポン内容</label>

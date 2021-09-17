@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Coupon;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CouponRequest;
 use App\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class CouponsController extends Controller
         return view('admin.coupon_create');
     }
 
-    public function store(Request $request)
+    public function store(CouponRequest $request)
     {
         DB::beginTransaction();
         try {
@@ -60,7 +61,7 @@ class CouponsController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(CouponRequest $request)
     {
         DB::beginTransaction();
         try {
