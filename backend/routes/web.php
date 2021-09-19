@@ -73,10 +73,10 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
 
         Route::prefix('users')->name('users.')->group(function () {
-            Route::get('/', 'UsersController@index')->name('top');
-            Route::get('/detail/{user_id}', 'UsersController@detail')->name('detail');
-            Route::get('/add_class/{user_id}', 'UsersController@add_class')->name('add_class');
-            Route::post('/add_class_store/', 'UsersController@add_class_store')->name('add_class_store');
+            Route::get('/', 'UserController@index')->name('top');
+            Route::get('/create', 'UserController@create')->name('create');
+            Route::post('/store', 'UserController@store')->name('store');
+            Route::get('/detail/{user_id}', 'UserController@detail')->name('detail');
         });
 
         Route::prefix('coupons')->name('coupons.')->group(function () {

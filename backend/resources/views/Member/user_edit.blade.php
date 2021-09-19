@@ -9,7 +9,7 @@
 @section('content')
     <div class="container main-content">
         <div class="theme">
-            <h1 class="text-center">マイページ</h1>
+            <h1 class="text-center">店舗情報編集</h1>
         </div>
 
         <div class="card" style="width: 100%">
@@ -51,7 +51,7 @@
                             <script src="{{ asset('js/map.js') }}"></script>
                             <script>
                                 var markerData = '';
-                                var key_word = '{{ $key_word }}';
+                                var key_word = '';
                             </script>
                             <script src="https://maps.googleapis.com/maps/api/js?key={{ config('api_key.google_map') }}&callback=initMap"></script>
                             <style>

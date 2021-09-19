@@ -15,6 +15,18 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+            @if(count($errors) > 0)
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
+            @if (session('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif
             <table class="table table-bordered">
                 <thead>
                 <tr>
@@ -39,6 +51,10 @@
                 @endforeach
                 </tbody>
             </table>
+            <div class="mt-3">
+                <a href="{{ route('admin.users.create') }}" class="btn btn-primary">新規作成</a>
+                <div style="float:right">{{$users->appends(request()->input())->links()}}</div>
+            </div>
         </div>
         <!-- /.card-body -->
     </div>

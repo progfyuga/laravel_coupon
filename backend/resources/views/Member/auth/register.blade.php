@@ -86,19 +86,19 @@
                     {{--電話番号--}}
                     <div class="form-group">
                         <label for="tel_no" class="">電話番号</label>
-                        <input id="tel_no" type="tel" class="form-control" placeholder="例:08012345678" @error('tel_no') is-invalid @enderror" name="tel_no" value="{{ old('tel_no') }}" required autocomplete="tel">
+                        <input id="tel_no" type="tel" class="form-control" placeholder="例:08012345678" name="tel_no" value="{{ old('tel_no') }}" required autocomplete="tel">
                     </div>
 
                     {{--ログインパスワード--}}
                     <div class="form-group">
                         <label for="password" class="">ログインパスワード</label>
-                        <input id="password" type="password" class="form-control" placeholder="パスワード" @error('password') is-invalid @enderror" name="password" required>
+                        <input id="password" type="password" class="form-control" placeholder="パスワード" name="password" required>
                     </div>
 
                     {{--ログインパスワード確認--}}
                     <div class="form-group">
                         <label for="password_confirmation" class="">ログインパスワード確認</label>
-                        <input id="password_confirmation" type="password" placeholder="パスワード確認用" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required>
+                        <input id="password_confirmation" type="password" placeholder="パスワード確認用" class="form-control" name="password_confirmation" required>
                     </div>
 
                     <div class="form-group text-center">

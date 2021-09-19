@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\User;
 
+
+use App\Http\Requests\Front\UserRequest;
 use App\Prefecture;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use App\User;
-use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -22,13 +23,12 @@ class UserController extends Controller
         ]);
     }
 
-    public function edit($key_word = '')
+    public function edit()
     {
         $user = Auth::user();
         $prefectures = Prefecture::get();
 
         $pack = [
-            'key_word' => $key_word,
             'user' => $user,
             'prefectures' => $prefectures,
         ];
@@ -36,12 +36,7 @@ class UserController extends Controller
         return view('member.user_edit',$pack);
     }
 
-    public function search()
-    {
-
-    }
-
-    public function update(Request $request)
+    public function update(UserRequest $request)
     {
         DB::beginTransaction();
         try {
@@ -63,6 +58,7 @@ class UserController extends Controller
             DB::commit();
             $message = '店舗情報の編集に成功しました。';
         } catch (\Exception $e) {
+            report($e);
             $message = '店舗情報の編集に失敗しました';
             DB::rollback();
         }
