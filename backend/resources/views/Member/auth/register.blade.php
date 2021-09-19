@@ -48,23 +48,24 @@
                     <div class="form-group row">
                         <div class="col-12">
                             <label for="name" class="">店舗名</label>
-                            <input id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
+                            <input id="name" class="form-control" placeholder="店舗名" @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="content" class="">店の説明</label>
                         <div class="col-12">
-                            <textarea class="form-control" name="content" id="content" rows='8' style="width: 100%;">{{old('content')}}</textarea>
+                            <textarea class="form-control" placeholder="店の説明" name="content" id="content" rows='8' style="width: 100%;">{{old('content')}}</textarea>
                         </div>
                     </div>
 
                     {{--メールアドレス--}}
                     <div class="form-group">
                         <label for="email" class="">メールアドレス</label>
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                        <input id="email" type="email" placeholder="メールアドレス" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                     </div>
 
+                    {{--都道府県--}}
                     <div class="form-group">
                         <label for="prefecture" class="">都道府県</label>
                         <br>
@@ -78,24 +79,26 @@
                     {{--住所--}}
                     <div class="form-group">
                         <label for="address" class="">住所</label>
-                        <input id="address" type="" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address">
+                        <input id="address" placeholder="住所" type="" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address">
                     </div>
+                    <p>※登録後、マイページの編集画面から緯度軽度の設定ができます。</p>
 
                     {{--電話番号--}}
                     <div class="form-group">
                         <label for="tel_no" class="">電話番号</label>
-                        <input id="tel_no" type="tel" class="form-control @error('tel_no') is-invalid @enderror" name="tel_no" value="{{ old('tel_no') }}" required autocomplete="tel">
+                        <input id="tel_no" type="tel" class="form-control" placeholder="例:08012345678" @error('tel_no') is-invalid @enderror" name="tel_no" value="{{ old('tel_no') }}" required autocomplete="tel">
                     </div>
 
                     {{--ログインパスワード--}}
                     <div class="form-group">
                         <label for="password" class="">ログインパスワード</label>
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+                        <input id="password" type="password" class="form-control" placeholder="パスワード" @error('password') is-invalid @enderror" name="password" required>
                     </div>
+
                     {{--ログインパスワード確認--}}
                     <div class="form-group">
                         <label for="password_confirmation" class="">ログインパスワード確認</label>
-                        <input id="password_confirmation" type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required>
+                        <input id="password_confirmation" type="password" placeholder="パスワード確認用" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" required>
                     </div>
 
                     <div class="form-group text-center">

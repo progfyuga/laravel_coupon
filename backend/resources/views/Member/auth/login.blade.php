@@ -53,6 +53,9 @@
                     </div>
 
                 </form>
+                <div class="form-group text-center">
+                    <a class="return-button" href="{{ route('member.register') }}" role="button">登録する</a>
+                </div>
             </div>
         </div>
 

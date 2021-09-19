@@ -84,6 +84,7 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'prefecture_id' => $data['prefecture_id'],
             'tel_no' => $data['tel_no'],
+            'map_status' => null,
             'password' => Hash::make($data['password']),
         ]);
     }

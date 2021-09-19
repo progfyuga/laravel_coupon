@@ -19,7 +19,7 @@
                 <thead>
                 <tr>
                     <th style="width: 5em">ID @sortablelink('id','↕︎')</th>
-                    <th style="width: 10em">生徒の名前</th>
+                    <th style="width: 10em">店舗名</th>
                     <th style="width: 10em">email</th>
                     <th style="width: 10em">電話番号</th>
                     <th style="width: 10em">登録日時</th>
@@ -30,7 +30,7 @@
                 @foreach( $users as $user )
                     <tr>
                         <td>{{ $user->id }}</td>
-                        <td>{{ $user->student_lastname }} {{ $user->student_firstname }}</td>
+                        <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->tel_no }}</td>
                         <td>{{ $user->created_at }}</td>

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class CouponsController extends Controller
+class CouponController extends Controller
 {
     public function index()
     {

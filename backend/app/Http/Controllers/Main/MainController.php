@@ -12,6 +12,7 @@ class MainController extends Controller
     public function index($key_word = '')
     {
         $coupons = Coupon::where('release_status', 1)
+            ->orderByDesc('id')
             ->paginate(6);
 
         $shops = User::where('map_status',1)

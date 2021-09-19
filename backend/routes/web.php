@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::namespace('User')->prefix('member')->name('member.')->group(function () {
 
     // ログイン認証関連
@@ -78,12 +80,12 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         });
 
         Route::prefix('coupons')->name('coupons.')->group(function () {
-            Route::get('/', 'CouponsController@index')->name('top');
-            Route::get('/create', 'CouponsController@create')->name('create');
-            Route::post('/store', 'CouponsController@store')->name('store');
-            Route::post('/delete', 'CouponsController@delete')->name('delete');
-            Route::get('/edit/{id}', 'CouponsController@edit')->name('edit');
-            Route::post('/update', 'CouponsController@update')->name('update');
+            Route::get('/', 'CouponController@index')->name('top');
+            Route::get('/create', 'CouponController@create')->name('create');
+            Route::post('/store', 'CouponController@store')->name('store');
+            Route::post('/delete', 'CouponController@delete')->name('delete');
+            Route::get('/edit/{id}', 'CouponController@edit')->name('edit');
+            Route::post('/update', 'CouponController@update')->name('update');
         });
 
         Route::prefix('tags')->name('tags.')->group(function () {
