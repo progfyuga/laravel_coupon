@@ -73,18 +73,20 @@ function createMap(mapLatLng, zoom)
     });
 
     // マーカー毎の処理
-    for (var i = 0; i < markerData.length; i++) {
-        markerLatLng = new google.maps.LatLng({lat: parseFloat(markerData[i]['lat']), lng: parseFloat(markerData[i]['lng'])}); // 緯度経度のデータ作成
-        marker[i] = new google.maps.Marker({ // マーカーの追加
-            position: markerLatLng, // マーカーを立てる位置を指定
-            map: map, // マーカーを立てる地図を指定
-            icon: {
-                url: '../images/coupon.png',// マーカーの画像を変更
-                scaledSize : new google.maps.Size(100, 70),//サイズ調節
-            }
-        });
+    if(markerData !== ''){
+        for (var i = 0; i < markerData.length; i++) {
+            markerLatLng = new google.maps.LatLng({lat: parseFloat(markerData[i]['lat']), lng: parseFloat(markerData[i]['lng'])}); // 緯度経度のデータ作成
+            marker[i] = new google.maps.Marker({ // マーカーの追加
+                position: markerLatLng, // マーカーを立てる位置を指定
+                map: map, // マーカーを立てる地図を指定
+                icon: {
+                    url: '../images/coupon.png',// マーカーの画像を変更
+                    scaledSize : new google.maps.Size(100, 70),//サイズ調節
+                }
+            });
 
-        markerEvent(i); // マーカーにクリックイベントを追加
+            markerEvent(i); // マーカーにクリックイベントを追加
+        }
     }
 
 }
@@ -94,5 +96,26 @@ function createMap(mapLatLng, zoom)
 function markerEvent(i) {
     marker[i].addListener('click', function() { // マーカーをクリックしたとき
          location.href = '/main/user_detail/' + markerData[i]['id'];
+    });
+}
+
+function searchLatLng()
+{
+    var prefecture = document.getElementById( "prefecture" )
+    var index = prefecture.selectedIndex;
+
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+        'address': prefecture.options[index].text + document.getElementById( "address" ).value
+    }, function (results, status) { // 結果
+        if (status === google.maps.GeocoderStatus.OK) { // ステータスがOKの場合
+            var mapLatLng = results[0].geometry.location;
+            var zoom = 15;
+            document.getElementById( "lat" ).value = results[0].geometry.location.lat();
+            document.getElementById( "lng" ).value = results[0].geometry.location.lng();
+            createMap(mapLatLng, zoom)
+        } else { // 失敗した場合
+            alert('検索した内容がマップ上に見つかりませんでした。');
+        }
     });
 }

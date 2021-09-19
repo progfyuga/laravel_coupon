@@ -22,15 +22,23 @@ class UserController extends Controller
         ]);
     }
 
-    public function edit()
+    public function edit($key_word = '')
     {
         $user = Auth::user();
         $prefectures = Prefecture::get();
 
-        return view('member.user_edit', [
+        $pack = [
+            'key_word' => $key_word,
             'user' => $user,
             'prefectures' => $prefectures,
-        ]);
+        ];
+
+        return view('member.user_edit',$pack);
+    }
+
+    public function search()
+    {
+
     }
 
     public function update(Request $request)

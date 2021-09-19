@@ -39,21 +39,35 @@
                             <label for="content">店舗の詳細</label>
                             <textarea name="content" placeholder="店舗の詳細" class="form-control" cols="auto" rows="10">{{ old('content') ?: $user->content }}</textarea>
                             <label for="prefecture_id">都道府県</label>
-                            <select name="prefecture_id" class="form-control">
+                            <select id="prefecture" name="prefecture_id" class="form-control">
                                 @foreach($prefectures as $prefecture)
                                     <option value="{{ $prefecture->id }}" @if($prefecture->id == $user->prefecture_id) selected @endif >{{ $prefecture->name }}</option>
                                 @endforeach
                             </select>
                             <label for="address">住所</label>
-                            <input type="text" name="address" class="form-control" placeholder="住所" value="{{ old('address') ?: $user->address }}">
+                            <input id="address" type="text" name="address" class="form-control" placeholder="住所" value="{{ old('address') ?: $user->address }}">
+                            <a href="javascript:searchLatLng();">住所で緯度軽度を検索</a>
+                            <div id="map"></div>
+                            <script src="{{ asset('js/map.js') }}"></script>
+                            <script>
+                                var markerData = '';
+                                var key_word = '{{ $key_word }}';
+                            </script>
+                            <script src="https://maps.googleapis.com/maps/api/js?key={{ config('api_key.google_map') }}&callback=initMap"></script>
+                            <style>
+                                #map {
+                                    width: 100%;
+                                    height: 300px;
+                                }
+                            </style>
+                            <label for="lat">緯度</label>
+                            <input readonly id="lat" type="text" name="lat" class="form-control" placeholder="緯度" value="{{ old('lat') ?: $user->lat }}">
+                            <label for="lng">経度</label>
+                            <input readonly id="lng" type="text" name="lng" class="form-control" placeholder="経度" value="{{ old('lng') ?: $user->lng }}">
                             <label for="email">メールアドレス</label>
                             <input type="text" name="email" class="form-control" placeholder="メールアドレス" value="{{ old('email') ?: $user->email }}">
                             <label for="tel_no">電話番号</label>
                             <input type="text" name="tel_no" class="form-control" placeholder="電話番号" value="{{ old('tel_no') ?: $user->tel_no }}">
-                            <h5 class="card-title">緯度</h5>
-                            <p class="card-text">{{ $user->lat }}</p>
-                            <h5 class="card-title">経度</h5>
-                            <p class="card-text">{{ $user->lng }}</p>
                             <label for="target">マップ公開状態</label>
                             <select name="map_status" class="form-control">
                                 <option value="1" @if($user->map_status) selected @endif >公開</option>
