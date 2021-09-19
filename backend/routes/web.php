@@ -76,7 +76,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
             Route::get('/', 'UserController@index')->name('top');
             Route::get('/create', 'UserController@create')->name('create');
             Route::post('/store', 'UserController@store')->name('store');
-            Route::get('/detail/{user_id}', 'UserController@detail')->name('detail');
+            Route::post('/delete', 'UserController@delete')->name('delete');
+            Route::get('/edit/{id}', 'UserController@edit')->name('edit');
+            Route::post('/update', 'UserController@update')->name('update');
         });
 
         Route::prefix('coupons')->name('coupons.')->group(function () {
@@ -89,11 +91,11 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
         });
 
         Route::prefix('tags')->name('tags.')->group(function () {
-            Route::get('/', 'TagsController@index')->name('top');
-            Route::get('/create', 'TagsController@create')->name('create');
-            Route::post('/store', 'TagsController@store')->name('store');
-            Route::post('/delete', 'TagsController@delete')->name('delete');
-            Route::post('/edit', 'TagsController@edit')->name('edit');
+            Route::get('/', 'TagController@index')->name('top');
+            Route::get('/create', 'TagController@create')->name('create');
+            Route::post('/store', 'TagController@store')->name('store');
+            Route::post('/delete', 'TagController@delete')->name('delete');
+            Route::post('/edit', 'TagController@edit')->name('edit');
         });
 
     });

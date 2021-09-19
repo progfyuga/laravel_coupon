@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 
-use App\Http\Requests\Front\UserRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Prefecture;
 use Illuminate\Http\Request;
 
@@ -36,7 +36,7 @@ class UserController extends Controller
         return view('member.user_edit',$pack);
     }
 
-    public function update(UserRequest $request)
+    public function update(UserUpdateRequest $request)
     {
         DB::beginTransaction();
         try {

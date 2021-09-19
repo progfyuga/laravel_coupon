@@ -42,7 +42,7 @@
                         <td>{{ $tag->id }}</td>
                         <td>{{ $tag->name }}</td>
                         <td>
-                            <button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#ModalEdit{{ $tag->id }}">編集</button>
+                            <button type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#ModalEdit{{ $tag->id }}">編集</button>
                         </td>
                         <td>
                             <button type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#Modal{{ $tag->id }}">削除</button>
@@ -103,7 +103,7 @@
                 </tbody>
             </table>
             <div class="mt-3">
-                <a href="{{ route('admin.tags.create') }}" class="btn btn-info">新規作成</a>
+                <a href="{{ route('admin.tags.create') }}" class="btn btn-primary">新規作成</a>
                 <div style="float:right">{{$tags->appends(request()->input())->links()}}</div>
             </div>
         </div>

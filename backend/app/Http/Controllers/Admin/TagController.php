@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class TagsController extends Controller
+class TagController extends Controller
 {
     public function index()
     {
