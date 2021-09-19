@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Prefecture;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 use App\User;
-use App\Course;
-use App\UsersCourse;
 use App\Http\Requests\UserUpdateRequest;
-use DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -18,50 +17,48 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        try {
-            $user_course = UsersCourse::where('user_id', Auth::id())->firstOrFail();
-
-            $user_class = Course::where('course', 1)->where('id', $user_course->course_id)->firstOrFail();
-
-            $user_class = $user_class->class_name;
-        } catch (\Exception $e) {
-            $user_class = "未配属";
-        }
-
-        return view('member.user', ['user' => $user, 'user_class' => $user_class]);
+        return view('member.user', [
+            'user' => $user
+        ]);
     }
 
     public function edit()
     {
         $user = Auth::user();
+        $prefectures = Prefecture::get();
 
-        return view('member.edit', ['user' => $user]);
+        return view('member.user_edit', [
+            'user' => $user,
+            'prefectures' => $prefectures,
+        ]);
     }
 
-    public function update(UserUpdateRequest $request)
+    public function update(Request $request)
     {
         DB::beginTransaction();
         try {
             $user = Auth::user();
-            $user->student_lastname = $request->input('student_lastname');
-            $user->student_lastname_kana = $request->input('student_lastname_kana');
-            $user->student_firstname = $request->input('student_firstname');
-            $user->student_firstname_kana = $request->input('student_firstname_kana');
-            $user->email = $request->input('email');
+            $user->name = $request->input('name');
+            $user->content = $request->input('content');
+            $user->prefecture_id = $request->input('prefecture_id');
             $user->address = $request->input('address');
+            $user->email = $request->input('email');
             $user->tel_no = $request->input('tel_no');
-            $user->parent_lastname = $request->input('parent_lastname');
-            $user->parent_lastname_kana = $request->input('parent_lastname_kana');
-            $user->parent_firstname = $request->input('parent_firstname');
-            $user->parent_firstname_kana = $request->input('parent_firstname_kana');
+            $user->lat = $request->input('lat','');
+            $user->lng = $request->input('lng','');
+            if(is_null($request->lat) || is_null($request->lng)){
+                $user->map_status = 0;
+            }else{
+                $user->map_status = $request->input('map_status');
+            }
             $user->save();
             DB::commit();
-            $message = '更新完了';
+            $message = '店舗情報の編集に成功しました。';
         } catch (\Exception $e) {
-            $message = '更新に失敗しました';
+            $message = '店舗情報の編集に失敗しました';
             DB::rollback();
         }
 
-        return redirect(route('member.edit', ['user' => $user]))->with('message', $message);
+        return redirect()->back()->with('message', $message);
     }
 }

@@ -25,9 +25,13 @@ Route::namespace('User')->prefix('member')->name('member.')->group(function () {
 
         Route::get('/', 'MemberController@index')->name('top');
 
-        Route::get('/user', 'UserController@index')->name('user');
-        Route::get('/user/edit', 'UserController@edit')->name('edit');
-        Route::post('/user/edit', 'UserController@update')->name('update');
+        Route::prefix('user')->name('user.')->group(function () {
+            Route::get('/', 'UserController@index')->name('index');
+            Route::get('/edit/', 'UserController@edit')->name('edit');
+            Route::post('/update/', 'UserController@update')->name('update');
+        });
+
+
 
         Route::prefix('coupon')->name('coupon.')->group(function () {
             Route::get('/create', 'CouponController@create')->name('create');

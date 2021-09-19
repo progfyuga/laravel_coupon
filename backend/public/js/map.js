@@ -25,12 +25,6 @@ function initMap() {
         createMap(mapLatLng, zoom)
     }
 
-
-
-
-
-
-
 }
 
 function createMap(mapLatLng, zoom)
@@ -52,6 +46,27 @@ function createMap(mapLatLng, zoom)
                 elementType: 'labels',
                 stylers: [
                     {visibility: 'off'},
+                ],
+            },
+            {
+                featureType: 'landscape',
+                elementType: 'labels',
+                stylers: [
+                    {visibility: 'on'},
+                ],
+            },
+            {
+                featureType: 'administrative',
+                elementType: 'labels',
+                stylers: [
+                    {visibility: 'on'},
+                ],
+            },
+            {
+                featureType: 'road',
+                elementType: 'labels',
+                stylers: [
+                    {visibility: 'on'},
                 ],
             },
         ],
