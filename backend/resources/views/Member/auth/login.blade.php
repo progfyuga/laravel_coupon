@@ -49,18 +49,18 @@
                     </div>
 
                     <div class="form-group text-center">
-                        <button type="submit" class="login-button">ログイン</button>
+                        <button type="submit" class="btn btn-primary">ログイン</button>
                     </div>
 
                 </form>
                 <div class="form-group text-center">
-                    <a class="return-button" href="{{ route('member.register') }}" role="button">登録する</a>
+                    <a class="btn btn-primary" href="{{ route('member.register') }}" role="button">登録する</a>
                 </div>
             </div>
         </div>
 
         <div class="button-group text-center">
-            <a class="return-button" href="{{ route('main.top') }}" role="button">戻る</a>
+            <a class="btn btn-secondary" href="{{ route('main.top') }}" role="button">戻る</a>
         </div>
     </div>
 

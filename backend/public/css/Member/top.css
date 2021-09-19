@@ -2,45 +2,6 @@ a {
     text-decoration: none;
     color: black;
 }
-.main-content {
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-.theme {
-    margin-bottom: 60px;
-}
-.info-group {
-    margin-bottom: 60px;
-}
-.class-group {
-    margin-bottom: 60px;
-}
-.class-button {
-    display: inline-block;
-    padding: 60px 250px !important;
-    font-size: 70px;
-    text-decoration: none !important;
-    color: white !important;
-    background-color: greenyellow;
-    transition: 0.5s;
-    font-weight: bold;
-    font-size: x-large;
-}
-.class-button:hover {
-    background-color: rgb(214, 255, 153);
-}
-.info-list ul {
-    color: #668ad8; /*文字色*/
-    border: dashed 2px #668ad8; /*破線 太さ 色*/
-    background: #f1f8ff; /*背景色*/
-    padding: 0.5em 0.5em 0.5em 2em;
-}
-
-.info-list ul li {
-    line-height: 1.5;
-    padding: 0.5em 0;
-    font-size: large;
-}
 
 @media screen and (max-width: 480px) {
     .main-content {

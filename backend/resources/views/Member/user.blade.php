@@ -3,7 +3,7 @@
 @section('title','マイページ')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/member/user.css') }}">
+<link rel="stylesheet" href="{{ asset('css/member/top.css') }}">
 @endsection
 
 @section('content')
@@ -35,8 +35,8 @@
     </div>
 
     <div class="button-group text-center">
-        <a class="edit-button" href="{{ route('member.user.edit') }}" role="button">編集する</a>
-        <a class="return-button" href="{{ route('member.top') }}" role="button">戻る</a>
+        <a class="btn btn-primary" href="{{ route('member.user.edit') }}" role="button">編集する</a>
+        <a class="btn btn-secondary" href="{{ route('member.top') }}" role="button">戻る</a>
     </div>
 </div>
 @endsection
