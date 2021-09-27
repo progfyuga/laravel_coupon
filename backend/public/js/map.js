@@ -1,7 +1,6 @@
 var map;
 var marker = [];
 var geocoder;
-var infoWindow = [];
 
 function initMap() {
 
@@ -88,6 +87,17 @@ function createMap(mapLatLng, zoom)
             markerEvent(i); // マーカーにクリックイベントを追加
         }
     }
+
+    //マーカーのクラスタ化
+    // 追加するクラスターアイコンへのパスを定義する (1.png, 2.png, ...)
+    const imagePath = "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m";
+
+    // マップとマーカーに対してクラスター化を有効にする
+    const markerClusterer = new MarkerClusterer(map, marker, {
+        imagePath: imagePath,
+        gridSize: 50,
+        maxZoom:21,
+    });
 
 }
 

@@ -14,6 +14,7 @@
             var markerData = @json($shops);
             var key_word = '{{ $key_word }}';
         </script>
+        <script src="{{ asset('js/markerclusterer_compiled.js') }}"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key={{ config('api_key.google_map') }}&callback=initMap"></script>
         <style>
             #map {

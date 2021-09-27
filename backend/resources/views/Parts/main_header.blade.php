@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="navbar-brand py-0" >
-        <a href=""> <span class="header-title">行く〜ポン</span></a>
+        <a href="/main"> <span class="header-title">行く〜ポン</span></a>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
