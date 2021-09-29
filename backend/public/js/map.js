@@ -37,6 +37,12 @@ function createMap(mapLatLng, zoom)
         mapTypeControl: false,
         panControl: false,
         streetViewControl: false,
+        fullscreenControl: false,
+
+
+        maxZoom: 18,
+        minZoom: 6,
+
 
         styles: [
             {

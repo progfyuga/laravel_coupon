@@ -9,11 +9,23 @@ use App\User;
 
 class MainController extends Controller
 {
-    public function index($key_word = '')
+    public function index($key_word = '',$search_word = '')
     {
-        $coupons = Coupon::where('release_status', 1)
-            ->orderByDesc('id')
-            ->paginate(6);
+        if($search_word){
+            //クーポン名、店舗名で検索
+            $coupons = Coupon::where('release_status', 1)
+                ->where('coupon_name', 'like', "%$search_word%")
+                ->orWhereHas('user', function($query) use ($search_word) {
+                    $query->where('name', 'like', "%$search_word%");
+                })
+                ->orderByDesc('id')
+                ->paginate(6);
+        }else{
+            $coupons = Coupon::where('release_status', 1)
+                ->orderByDesc('id')
+                ->paginate(6);
+        }
+
 
         $shops = User::where('map_status',1)
             ->select(['id','lat','lng'])
@@ -30,7 +42,12 @@ class MainController extends Controller
 
     public function key_word(Request $request)
     {
-        return $this->index($request->key_word);
+        return $this->index($request->key_word,'');
+    }
+
+    public function search_coupon(Request $request)
+    {
+        return $this->index('',$request->search_word);
     }
 
 }
