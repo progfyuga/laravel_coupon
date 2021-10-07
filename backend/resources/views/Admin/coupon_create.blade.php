@@ -39,6 +39,17 @@
                         <textarea name="coupon_content" placeholder="クーポンの内容" class="form-control" cols="auto" rows="10">{{ old('coupon_content') }}</textarea>
                         <label for="target">対象者</label>
                         <input type="text" name="target" class="form-control" placeholder="対象者の説明" value="{{ old('target') }}">
+                        <label for="target">タグ設定</label>
+                        <br>
+                        @foreach($tags as $tag)
+                        <div class="form-check form-check-inline ">
+                            <input class="form-check-input" type="checkbox" name="tags[]" value="{{$tag->id}}" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                {{ $tag->name }}
+                            </label>
+                        </div>
+                        @endforeach
+                        <br>
                         <label for="target">公開状態</label>
                         <select name="release_status" class="form-control">
                             <option value="1" >公開</option>

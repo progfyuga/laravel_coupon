@@ -19,7 +19,6 @@ class MemberController extends Controller
             ->firstOrFail();
 
         $coupons = Coupon::where('user_id',Auth::id())
-            ->where('release_status',1)
             ->paginate(6);
 
         return view('member.top')->with([

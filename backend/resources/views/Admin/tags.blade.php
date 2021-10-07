@@ -20,7 +20,6 @@
                 <tr>
                     <th>ID @sortablelink('id','↕︎')</th>
                     <th>タイトル</th>
-                    <th>投稿日時</th>
                     <th colspan="2">操作</th>
                 </tr>
                 </thead>
@@ -43,8 +42,6 @@
                         <td>{{ $tag->name }}</td>
                         <td>
                             <button type="button" class="btn btn-xs btn-info" data-toggle="modal" data-target="#ModalEdit{{ $tag->id }}">編集</button>
-                        </td>
-                        <td>
                             <button type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#Modal{{ $tag->id }}">削除</button>
                         </td>
                     </tr>

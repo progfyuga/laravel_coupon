@@ -70,6 +70,7 @@ class TagController extends Controller
         DB::beginTransaction();
         try {
             $tag = Tag::where('id',$request->id)->first();
+            $tag->coupons()->detach();
             $tag->delete();
             $message = 'タグの削除に成功しました。';
         } catch(\Exception $e){

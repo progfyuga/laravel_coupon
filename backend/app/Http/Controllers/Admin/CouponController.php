@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Coupon;
+use App\CouponTag;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CouponRequest;
 use App\Tag;
@@ -25,7 +26,11 @@ class CouponController extends Controller
 
     public function create()
     {
-        return view('admin.coupon_create');
+        $tags = Tag::get();
+
+        return view('admin.coupon_create',[
+            'tags' => $tags,
+        ]);
     }
 
     public function store(CouponRequest $request)
@@ -39,6 +44,9 @@ class CouponController extends Controller
             $coupon->target = $request->input('target');
             $coupon->release_status = $request->input('release_status');
             $coupon->save();
+
+            $coupon->tags()->sync($request->tags);
+
             $message = 'クーポンの作成に成功しました。';
         } catch(\Exception $e){
             report($e);
@@ -56,8 +64,11 @@ class CouponController extends Controller
         $coupon = Coupon::where('id',$id)
             ->firstOrFail();
 
+        $tags = Tag::get();
+
         return view('admin.coupon_edit')->with([
             'coupon' => $coupon,
+            'tags' => $tags,
         ]);
     }
 
@@ -66,12 +77,17 @@ class CouponController extends Controller
         DB::beginTransaction();
         try {
             $coupon = Coupon::where('id',$request->id)->first();
+
+            $coupon->tags()->detach();
+            $coupon->tags()->sync($request->tags);
+
             $coupon->user_id = $request->input('user_id');
             $coupon->coupon_name = $request->input('coupon_name');
             $coupon->coupon_content = $request->input('coupon_content');
             $coupon->target = $request->input('target');
             $coupon->release_status = $request->input('release_status');
             $coupon->save();
+
             $message = 'クーポンの編集に成功しました。';
         } catch(\Exception $e){
             report($e);
@@ -90,6 +106,7 @@ class CouponController extends Controller
         DB::beginTransaction();
         try {
             $coupon = Coupon::where('id',$request->id)->first();
+            $coupon->tags()->detach();
             $coupon->delete();
             $message = 'クーポンの削除に成功しました。';
         } catch(\Exception $e){
