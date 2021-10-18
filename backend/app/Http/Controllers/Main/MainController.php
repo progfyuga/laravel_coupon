@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Main;
 
 use App\Coupon;
 use App\Http\Controllers\Controller;
+use App\Tag;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -16,6 +17,9 @@ class MainController extends Controller
             $coupons = Coupon::where('release_status', 1)
                 ->where('coupon_name', 'like', "%$search_word%")
                 ->orWhereHas('user', function($query) use ($search_word) {
+                    $query->where('name', 'like', "%$search_word%");
+                })
+                ->orWhereHas('tags', function($query) use ($search_word) {
                     $query->where('name', 'like', "%$search_word%");
                 })
                 ->orderByDesc('id')
@@ -31,10 +35,14 @@ class MainController extends Controller
             ->select(['id','lat','lng'])
             ->get();
 
+        $tags = Tag::get();
+
         $pack = [
             'key_word' => $key_word,
             'coupons' => $coupons,
             'shops' => $shops->toArray(),
+            'tags' => $tags,
+            'search_word' => $search_word,
         ];
 
         return view('main.top',$pack);

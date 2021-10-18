@@ -57,9 +57,24 @@
                         </div>
                     </div>
                 @endforeach
+                <div class="mb-3">
+                    タグ検索
+                    <br>
+                    @foreach($tags as $tag)
+                        <form action="{{ route('main.search_coupon') }}">
+                            <input name="search_word" type="text" value="{{ $tag->name }}" class="form-control" hidden>
+                            @if( $search_word == $tag->name   )
+                                <button type="submit" class="btn btn-success">{{ $tag->name }}</button>
+                            @else
+                                <button type="submit" class="btn btn-outline-success">{{ $tag->name }}</button>
+                            @endif
+                        </form>
+                    @endforeach
+                </div>
+
 
                 <form action="{{ route('main.search_coupon') }}">
-                    クーポン名、店舗名からクーポンを検索
+                    クーポン名、タグ、店舗名からクーポンを検索
                     <div class="row">
                         <div class="col-8">
                             <input name="search_word" type="text" class="form-control" placeholder="クーポン名、店舗名を入力してください。">
