@@ -39,6 +39,7 @@
             <a href="{{ route('admin.tags.top') }}" class="btn btn-secondary mt-3">戻る</a>
         </form>
     </div>
+</div>
     <!-- /.card-body -->
 
     @stop

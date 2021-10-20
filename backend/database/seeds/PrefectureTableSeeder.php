@@ -12,6 +12,7 @@ class PrefectureTableSeeder extends Seeder
      */
     public function run()
     {
+        Prefecture::truncate();
 
         $params = [
 

@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/Member/auth/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/member/auth/login.css') }}">
     <link rel="stylesheet" href="{{ asset('css/Parts/footer.css') }}">
 </head>
 
@@ -49,15 +49,18 @@
                     </div>
 
                     <div class="form-group text-center">
-                        <button type="submit" class="login-button">ログイン</button>
+                        <button type="submit" class="btn btn-primary">ログイン</button>
                     </div>
 
                 </form>
+                <div class="form-group text-center">
+                    <a class="btn btn-primary" href="{{ route('member.register') }}" role="button">登録する</a>
+                </div>
             </div>
         </div>
 
         <div class="button-group text-center">
-            <a class="return-button" href="{{ route('main.top') }}" role="button">戻る</a>
+            <a class="btn btn-secondary" href="{{ route('main.top') }}" role="button">戻る</a>
         </div>
     </div>
 

@@ -27,7 +27,7 @@
             @include('adminlte::partials.navbar.navbar')
         @endif
 
-        {{-- Left Main Sidebar --}}
+        {{-- Left main Sidebar --}}
         @if(!$layoutHelper->isLayoutTopnavEnabled())
             @include('adminlte::partials.sidebar.left-sidebar')
         @endif
@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            {{-- Main Content --}}
+            {{-- main Content --}}
             <div class="content">
                 <div class="{{ config('adminlte.classes_content') ?: $def_container_class }}">
                     @yield('content')

@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\TagRequest;
 use App\Tag;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class TagsController extends Controller
+class TagController extends Controller
 {
     public function index()
     {
@@ -26,7 +27,7 @@ class TagsController extends Controller
         return view('admin.tag_create');
     }
 
-    public function store(Request $request)
+    public function store(TagRequest $request)
     {
         DB::beginTransaction();
         try {
@@ -69,6 +70,7 @@ class TagsController extends Controller
         DB::beginTransaction();
         try {
             $tag = Tag::where('id',$request->id)->first();
+            $tag->coupons()->detach();
             $tag->delete();
             $message = 'タグの削除に成功しました。';
         } catch(\Exception $e){

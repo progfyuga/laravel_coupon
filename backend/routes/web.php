@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::namespace('User')->prefix('member')->name('member.')->group(function () {
 
     // ログイン認証関連
@@ -25,9 +27,21 @@ Route::namespace('User')->prefix('member')->name('member.')->group(function () {
 
         Route::get('/', 'MemberController@index')->name('top');
 
-        Route::get('/user', 'UserController@index')->name('user');
-        Route::get('/user/edit', 'UserController@edit')->name('edit');
-        Route::post('/user/edit', 'UserController@update')->name('update');
+        Route::prefix('user')->name('user.')->group(function () {
+            Route::get('/', 'UserController@index')->name('index');
+            Route::get('/edit/', 'UserController@edit')->name('edit');
+            Route::post('/update/', 'UserController@update')->name('update');
+        });
+
+
+
+        Route::prefix('coupon')->name('coupon.')->group(function () {
+            Route::get('/create', 'CouponController@create')->name('create');
+            Route::post('/store', 'CouponController@store')->name('store');
+            Route::post('/delete', 'CouponController@delete')->name('delete');
+            Route::get('/edit/{id}', 'CouponController@edit')->name('edit');
+            Route::post('/update', 'CouponController@update')->name('update');
+        });
 
     });
 
@@ -38,7 +52,9 @@ Route::get('/', 'Main\MainController@index')->name('top');
 Route::prefix('main')->name('main.')->group(function () {
     Route::get('/', 'Main\MainController@index')->name('top');
     Route::get('/key_word', 'Main\MainController@key_word')->name('key_word');
+    Route::get('/search_coupon', 'Main\MainController@search_coupon')->name('search_coupon');
     Route::get('/coupon_detail/{id}', 'Main\CouponsController@index')->name('coupon_detail');
+    Route::get('/user_detail/{id}', 'Main\UserController@index')->name('user_detail');
 });
 
 
@@ -58,27 +74,29 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
 
 
         Route::prefix('users')->name('users.')->group(function () {
-            Route::get('/', 'UsersController@index')->name('top');
-            Route::get('/detail/{user_id}', 'UsersController@detail')->name('detail');
-            Route::get('/add_class/{user_id}', 'UsersController@add_class')->name('add_class');
-            Route::post('/add_class_store/', 'UsersController@add_class_store')->name('add_class_store');
+            Route::get('/', 'UserController@index')->name('top');
+            Route::get('/create', 'UserController@create')->name('create');
+            Route::post('/store', 'UserController@store')->name('store');
+            Route::post('/delete', 'UserController@delete')->name('delete');
+            Route::get('/edit/{id}', 'UserController@edit')->name('edit');
+            Route::post('/update', 'UserController@update')->name('update');
         });
 
         Route::prefix('coupons')->name('coupons.')->group(function () {
-            Route::get('/', 'CouponsController@index')->name('top');
-            Route::get('/create', 'CouponsController@create')->name('create');
-            Route::post('/store', 'CouponsController@store')->name('store');
-            Route::post('/delete', 'CouponsController@delete')->name('delete');
-            Route::get('/edit/{id}', 'CouponsController@edit')->name('edit');
-            Route::post('/update', 'CouponsController@update')->name('update');
+            Route::get('/', 'CouponController@index')->name('top');
+            Route::get('/create', 'CouponController@create')->name('create');
+            Route::post('/store', 'CouponController@store')->name('store');
+            Route::post('/delete', 'CouponController@delete')->name('delete');
+            Route::get('/edit/{id}', 'CouponController@edit')->name('edit');
+            Route::post('/update', 'CouponController@update')->name('update');
         });
 
         Route::prefix('tags')->name('tags.')->group(function () {
-            Route::get('/', 'TagsController@index')->name('top');
-            Route::get('/create', 'TagsController@create')->name('create');
-            Route::post('/store', 'TagsController@store')->name('store');
-            Route::post('/delete', 'TagsController@delete')->name('delete');
-            Route::post('/edit', 'TagsController@edit')->name('edit');
+            Route::get('/', 'TagController@index')->name('top');
+            Route::get('/create', 'TagController@create')->name('create');
+            Route::post('/store', 'TagController@store')->name('store');
+            Route::post('/delete', 'TagController@delete')->name('delete');
+            Route::post('/edit', 'TagController@edit')->name('edit');
         });
 
     });

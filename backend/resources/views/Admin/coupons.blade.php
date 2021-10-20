@@ -11,7 +11,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">タグ管理</h3>
+            <h3 class="card-title">クーポン管理</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -46,9 +46,10 @@
                         <td>{{ $coupon->coupon_name }}</td>
                         <td>{{ $coupon->release_status ? '公開' : '非公開' }}</td>
                         <td>
-                            <a class="btn btn-xs btn-primary" href="{{ route('admin.coupons.edit',$coupon->id) }}">編集</a>
+                            {{ $coupon->created_at }}
                         </td>
                         <td>
+                            <a class="btn btn-xs btn-info" href="{{ route('admin.coupons.edit',$coupon->id) }}">編集</a>
                             <button type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#Modal{{ $coupon->id }}">削除</button>
                         </td>
                     </tr>
@@ -81,10 +82,11 @@
                 </tbody>
             </table>
             <div class="mt-3">
-                <a href="{{ route('admin.coupons.create') }}" class="btn btn-info">新規作成</a>
+                <a href="{{ route('admin.coupons.create') }}" class="btn btn-primary">新規作成</a>
                 <div style="float:right">{{$coupons->appends(request()->input())->links()}}</div>
             </div>
         </div>
+    </div>
         <!-- /.card-body -->
 
         @stop

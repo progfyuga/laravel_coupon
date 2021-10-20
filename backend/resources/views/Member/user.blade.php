@@ -3,7 +3,7 @@
 @section('title','マイページ')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/Member/user.css') }}">
+<link rel="stylesheet" href="{{ asset('css/member/top.css') }}">
 @endsection
 
 @section('content')
@@ -12,23 +12,31 @@
         <h1 class="text-center">マイページ</h1>
     </div>
 
-    <div class="card mx-auto border-dark">
+    <div class="card" style="width: 100%">
         <div class="card-header">
-            あなたの情報
+            {{ $user->name }}
         </div>
-        <ul class="list-group list-group-flush text-center">
-            <li class="list-group-item"><i class="fas fa-child fa-fw"></i> {{$user->student_lastname}} {{$user->student_firstname}}</li>
-            <li class="list-group-item"><i class="fas fa-school fa-fw"></i> あなたのクラスは {{$user_class}} です</li>
-            <li class="list-group-item"><i class="fas fa-envelope fa-fw"></i> {{$user->email}}</li>
-            <li class="list-group-item"><i class="fas fa-map-marker-alt fa-fw"></i> {{$user->address}}</li>
-            <li class="list-group-item"><i class="fas fa-phone fa-fw"></i> {{$user->tel_no}}</li>
-            <li class="list-group-item"><i class="fas fa-user fa-fw"></i> {{$user->parent_lastname}} {{$user->parent_firstname}}</li>
-        </ul>
+        <div class="card-body">
+            <h5 class="card-title">詳細</h5>
+            <p class="card-text">{{ $user->content }}</p>
+            <h5 class="card-title">住所</h5>
+            <p class="card-text">{{ $user->prefecture->name }}{{ $user->address }}</p>
+            <h5 class="card-title">メールアドレス</h5>
+            <p class="card-text">{{ $user->email }}</p>
+            <h5 class="card-title">電話番号</h5>
+            <p class="card-text">{{ $user->tel_no }}</p>
+            <h5 class="card-title">緯度</h5>
+            <p class="card-text">{{ $user->lat }}</p>
+            <h5 class="card-title">経度</h5>
+            <p class="card-text">{{ $user->lng }}</p>
+            <h5 class="card-title">マップ公開状態</h5>
+            <p class="card-text">{{ $user->map_status ? '公開中' : '非公開'}}</p>
+        </div>
     </div>
 
     <div class="button-group text-center">
-        <a class="edit-button" href="{{ route('member.edit') }}" role="button">編集する</a>
-        <a class="return-button" href="{{ route('member.top') }}" role="button">戻る</a>
+        <a class="btn btn-primary" href="{{ route('member.user.edit') }}" role="button">編集する</a>
+        <a class="btn btn-secondary" href="{{ route('member.top') }}" role="button">戻る</a>
     </div>
 </div>
 @endsection
